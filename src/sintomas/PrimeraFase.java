@@ -2,14 +2,15 @@ package sintomas;
 
 import monitor.Sintoma;
 
-public class TomarEnCuenta extends Sintoma {
+public class PrimeraFase extends Sintoma {
 
-    public TomarEnCuenta(String n) {
+    public PrimeraFase(String n) {
         super(n);
     }
 
     @Override
     public int peso() {
-        return 1;
+        return 10;
     }
+
 }

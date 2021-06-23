@@ -2,9 +2,9 @@ package sintomas;
 
 import monitor.Sintoma;
 
-public class Determinante extends Sintoma {
+public class SegundaFase extends Sintoma {
 
-    public Determinante(String n) {
+    public SegundaFase(String n) {
         super(n);
     }
 
