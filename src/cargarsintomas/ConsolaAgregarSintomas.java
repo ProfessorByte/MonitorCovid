@@ -14,6 +14,7 @@ public class ConsolaAgregarSintomas {
         String nuevoSintoma;
         while (true) {
             sc = new Scanner(System.in);
+            System.out.println("Presionar enter para terminar");
             System.out.print("Insertar nuevo sintoma: ");
             nuevoSintoma = sc.nextLine();
             if (nuevoSintoma.equals("")) break;

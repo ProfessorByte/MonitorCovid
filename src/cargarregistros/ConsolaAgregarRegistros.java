@@ -15,6 +15,7 @@ public class ConsolaAgregarRegistros {
         int opcion = 0;
         while (true) {
             sc = new Scanner(System.in);
+            System.out.println("0. Salir del programa");
             for (int i = 0; i < this.sintomasDisponibles.size(); i++) {
                 System.out.println((i + 1) + ". " + this.sintomasDisponibles.get(i));
             }
