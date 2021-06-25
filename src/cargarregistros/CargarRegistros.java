@@ -13,7 +13,7 @@ public class CargarRegistros {
     private File registrosTXT;
 
     public CargarRegistros(Sintomas sintomas) {
-        registrosTXT = new File("registros.txt");
+        registrosTXT = new File("cargarregistros\\registros.txt");
         if (!registrosTXT.exists()) {
             try {
                 registrosTXT.createNewFile();

@@ -20,7 +20,7 @@ public class CargarSintomas {
 
     public CargarSintomas() {
         sintomas = new Sintomas();
-        sintomasTXT = new File("sintomas.txt");
+        sintomasTXT = new File("cargarsintomas\\sintomas.txt");
         if (!sintomasTXT.exists()) {
             try {
                 sintomasTXT.createNewFile();
