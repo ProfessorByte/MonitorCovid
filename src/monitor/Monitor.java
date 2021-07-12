@@ -2,8 +2,7 @@ package monitor;
 
 import cargarregistros.CargarRegistros;
 import cargarsintomas.CargarSintomas;
-import cargarsintomas.ConsolaAgregarSintomas;
-import diagnosticos.DiagnosticoSimple;
+import diagnosticos.DiagnosticoFases;
 
 public class Monitor {
 
@@ -16,7 +15,7 @@ public class Monitor {
     public Monitor() {
         CargarSintomas cargarSintomas = new CargarSintomas();
         sintomas = cargarSintomas.getSintomas();
-        funcion = new DiagnosticoSimple(sintomas);
+        funcion = new DiagnosticoFases(sintomas);
         registros = new Registros();
         cargarRegistros = new CargarRegistros(sintomas);
     }

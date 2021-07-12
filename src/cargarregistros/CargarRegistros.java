@@ -1,74 +1,89 @@
 package cargarregistros;
 
 import monitor.Registro;
+import monitor.Registros;
 import monitor.Sintoma;
 import monitor.Sintomas;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class CargarRegistros {
-
-    private Sintomas sintomas;
-    private File registrosTXT;
+    private final Sintomas sintomas;
+    private final Registros registros;
+    private final File registrosTXT;
 
     public CargarRegistros(Sintomas sintomas) {
-        registrosTXT = new File("cargarregistros\\registros.txt");
-        if (!registrosTXT.exists()) {
-            try {
-                registrosTXT.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
         this.sintomas = sintomas;
-    }
+        this.registros = new Registros();
+        this.registrosTXT = new File("registros_PabloPardo.txt");
 
-    public Sintomas agregarSintomasRegistro(List<String> sintomas) {
-        Sintomas res = new Sintomas();
-        for (Sintoma sintoma : this.sintomas) {
-            for (String s : sintomas) {
-                try {
-                    if (sintoma.toString().equals(s)) {
-                        res.add(sintoma);
-                        BufferedWriter bw = new BufferedWriter(new FileWriter(registrosTXT.getAbsoluteFile(), true));
-                        bw.write(s + "\n");
-                        bw.flush();
-                        bw.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return res;
-    }
-
-    private Date registrarTiempo() {
-        Calendar hoy = new GregorianCalendar();
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(registrosTXT.getAbsoluteFile(), true));
-            bw.write("#-" + hoy.get(Calendar.DAY_OF_MONTH) + "-" + (hoy.get(Calendar.MONTH) + 1) + "-" + hoy.get(Calendar.YEAR) + "-" + hoy.get(Calendar.HOUR_OF_DAY) + "-" + hoy.get(Calendar.MINUTE) + "\n");
-            bw.flush();
-            bw.close();
+            if (!registrosTXT.exists()) {
+                registrosTXT.createNewFile();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return hoy.getTime();
+        cargarRegistrosGuardados();
+        new ComunicacionInterfazRegistros(this);
     }
 
-    public List<String> listarSintomas() {
-        List<String> res = new ArrayList<>();
-        for (Sintoma s : sintomas) {
-            res.add(s.toString());
+    private void cargarRegistrosGuardados() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(registrosTXT));
+            Registro registro;
+            Sintomas sintomas = new Sintomas();
+            String linea;
+            while ((linea=br.readLine()) != null) {
+                String[] lineaDividida = linea.split(",");
+                if (lineaDividida[0].equals("#")) {
+                    sintomas = new Sintomas();
+                    Calendar date = GregorianCalendar.getInstance();
+                    date.setTimeInMillis(Long.parseLong(lineaDividida[1]));
+                    registro = new Registro(date.getTime(), sintomas);
+                    registros.push(registro);
+                } else {
+                    sintomas.add((Sintoma) Class.forName("sintomas." + lineaDividida[1]).getConstructor(String.class).newInstance(lineaDividida[0]));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
-        return res;
+    }
+
+    public File getRegistrosTXT() {
+        return registrosTXT;
+    }
+
+    public Registros getRegistros() {
+        return registros;
+    }
+
+    public Sintomas getTotalSintomas() {
+        return sintomas;
     }
 
     public Registro getRegistro() {
-        ConsolaAgregarRegistros agregarReg = new ConsolaAgregarRegistros(listarSintomas());
-        Date hoy = registrarTiempo();
-        Sintomas sintomas = agregarSintomasRegistro(agregarReg.getSintomasAgregados());
-        return new Registro(hoy, sintomas);
+        if (registros.isEmpty()) {
+            return new Registro(new Date(), new Sintomas());
+        }
+        return registros.peek();
     }
 }

@@ -1,26 +1,27 @@
 package cargarsintomas;
 
 import monitor.Sintoma;
-import monitor.Sintomas;
 
-public class ValidadorDeSintomas {
-    private String nombreSintoma;
+public class Validador {
+    private final CargarSintomas cargarSintomas;
+    private String ultimoSintomaValidado;
+    private final int DISTANCIA_MINIMA = 3;
 
-    public ValidadorDeSintomas(String nombreSintoma) {
-        this.nombreSintoma = normalizar(nombreSintoma);
+    public Validador(CargarSintomas cargarSintomas) {
+        this.cargarSintomas = cargarSintomas;
     }
 
-    public boolean validar(Sintomas sintomas) {
-        for (Sintoma s : sintomas) {
-            if (levenshteinDistance(nombreSintoma, s.toString()) <= 3) {
-                return false;
+    public boolean validar(String nombreSintoma) {
+        if (!nombreSintoma.equals("") && !normalizar(nombreSintoma).equals("")) {
+            for (Sintoma s: cargarSintomas.getSintomas()) {
+                if (levenshteinDistance(normalizar(nombreSintoma), s.toString()) <= DISTANCIA_MINIMA) {
+                    return false;
+                }
             }
+            ultimoSintomaValidado = normalizar(nombreSintoma);
+            return true;
         }
-        return true;
-    }
-
-    public String getNombreSintoma() {
-        return nombreSintoma;
+        return false;
     }
 
     private String normalizar(String nombreSintoma) {
@@ -53,5 +54,9 @@ public class ValidadorDeSintomas {
             }
         }
         return distance[str1.length][str2.length];
+    }
+
+    public String getUltimoSintomaValidado() {
+        return ultimoSintomaValidado;
     }
 }
