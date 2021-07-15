@@ -1,21 +1,20 @@
-Dolor corporal,PrimeraFase
-Dolor de ojos,PrimeraFase
-Dolor de cabeza,PrimeraFase
-Vomitos,PrimeraFase
-Diarrea,PrimeraFase
-Secrecion,PrimeraFase
-Congestion nasal,PrimeraFase
-Decaimiento,PrimeraFase
-Ojos ardientes,PrimeraFase
-Ardor al orinar,PrimeraFase
-Sentirse febril,PrimeraFase
-Dolor de garganta,PrimeraFase
-Perdida del gusto,SegundaFase
-Perdida del olfato,SegundaFase
-Oxigenacion  baja,SegundaFase
-Dolor en el pecho,SegundaFase
-Dolor en la espalda baja,SegundaFase
-Tos seca,SegundaFase
-Alta temperatura,SegundaFase
-Sequedad en la garganta,SegundaFase
-Picazon de garganta,SegundaFase
+DOLOR CORPORAL,PrimeraFase
+DOLOR DE OJOS,PrimeraFase
+DOLOR DE CABEZA,PrimeraFase
+VOMITOS,PrimeraFase
+DIARREA,PrimeraFase
+SECRECION O CONGESTION NASAL,PrimeraFase
+DECAIMIENTO,PrimeraFase
+OJOS ARDIENTES,PrimeraFase
+ARDOR AL ORINAR,PrimeraFase
+SENTIRSE FEBRIL,PrimeraFase
+GARGANTA RASPADA,PrimeraFase
+PERDIDA DEL GUSTO Y/O OLFATO,SegundaFase
+CANSANCIO A LOS MINIMOS ESFUERZOS,SegundaFase
+DOLOR EN EL PECHO,SegundaFase
+DOLOR EN LA ESPALDA BAJA,SegundaFase
+TOS SECA,SegundaFase
+ALTA TEMPERATURA,SegundaFase
+SEQUEDAD EN LA GARGANTA,SegundaFase
+PICAZON EN LA GARGANTA,SegundaFase
+HOLA,PrimeraFase

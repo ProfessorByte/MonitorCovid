@@ -1,35 +1,18 @@
-#,1626112157973
-Dolor de garganta,PrimeraFase
-Dolor corporal,PrimeraFase
-Congestion nasal,PrimeraFase
-#,1626112179157
-Dolor de garganta,PrimeraFase
-Diarrea,PrimeraFase
-Dolor corporal,PrimeraFase
-Congestion nasal,PrimeraFase
-Dolor de ojos,PrimeraFase
-Ojos ardientes,PrimeraFase
-Sentirse febril,PrimeraFase
-Decaimiento,PrimeraFase
-Dolor de cabeza,PrimeraFase
-#,1626112326717
-Dolor de garganta,PrimeraFase
-Vomitos,PrimeraFase
-Diarrea,PrimeraFase
-Congestion nasal,PrimeraFase
-Dolor de ojos,PrimeraFase
-Ardor al orinar,PrimeraFase
-Secrecion,PrimeraFase
-Decaimiento,PrimeraFase
-#,1626112340181
-Diarrea,PrimeraFase
-Dolor corporal,PrimeraFase
-Congestion nasal,PrimeraFase
-Dolor de ojos,PrimeraFase
-Ojos ardientes,PrimeraFase
-Sentirse febril,PrimeraFase
-Secrecion,PrimeraFase
-Dolor de cabeza,PrimeraFase
-#,1626112370117
-Dolor de ojos,PrimeraFase
-Dolor de cabeza,PrimeraFase
+#,1626344677200
+DOLOR CORPORAL,PrimeraFase
+SECRECION O CONGESTION NASAL,PrimeraFase
+DECAIMIENTO,PrimeraFase
+DOLOR DE OJOS,PrimeraFase
+#,1626345283120
+DOLOR CORPORAL,PrimeraFase
+SECRECION O CONGESTION NASAL,PrimeraFase
+DIARREA,PrimeraFase
+ARDOR AL ORINAR,PrimeraFase
+HOLA,PrimeraFase
+SENTIRSE FEBRIL,PrimeraFase
+GARGANTA RASPADA,PrimeraFase
+#,1626345369616
+DOLOR CORPORAL,PrimeraFase
+VOMITOS,PrimeraFase
+DECAIMIENTO,PrimeraFase
+GARGANTA RASPADA,PrimeraFase

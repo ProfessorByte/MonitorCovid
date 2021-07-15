@@ -5,7 +5,6 @@ import cargarregistros.ComunicacionInterfazRegistros;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import java.awt.*;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,7 +15,6 @@ public class CargarRegistrosGUI extends JFrame {
     private JList<String> listFechas;
     private JList<String> listSintomasRegistrados;
     private JPanel panelRegistros;
-    private JLabel labelRecomendacion;
 
     private final DefaultTableModel tblModel;
     private final DefaultListModel<String> listFechasModel;
@@ -41,22 +39,12 @@ public class CargarRegistrosGUI extends JFrame {
 
         listFechas.setModel(listFechasModel);
         listSintomasRegistrados.setModel(listSintomasModel);
-        tblModel.setColumnIdentifiers(new String[]{"Sintomas", ""});
-        insertarCheckBoxATabla(1, tblRegistroSintomas);
-        for (String sintoma : comunicacionInterfazRegistros.cargarSintomasAElegir()) {
-            tblModel.addRow(new String[]{sintoma});
+        tblModel.setColumnIdentifiers(new String[]{"Sintomas", "Categoria", ""});
+        insertarCheckBoxATabla(2, tblRegistroSintomas);
+        for (String[] sintoma : comunicacionInterfazRegistros.cargarSintomasAElegir()) {
+            tblModel.addRow(sintoma);
         }
         mostrarFechasRegistros();
-
-        labelRecomendacion.setText("");
-        if (comunicacionInterfazRegistros.getIndicadorEstadoFase().existe()) {
-            if (comunicacionInterfazRegistros.getIndicadorEstadoFase().leerIndicador().equals("Fase1")) {
-                labelRecomendacion.setText("Usted debe visitar al medico y monitorear sus sintomas diariamente");
-            } else if (comunicacionInterfazRegistros.getIndicadorEstadoFase().leerIndicador().equals("Fase2")) {
-                labelRecomendacion.setText("VAYA AL MEDICO URGENTEMENTE, Y HAGASE UNA PRUEBA PCR");
-            }
-        }
-        labelRecomendacion.setForeground(Color.RED);
 
         listFechas.addMouseListener(new SintomasFechas(this));
         btnFinalizarRegistro.addActionListener(e -> finalizarRegistros.finalizarRegistro());

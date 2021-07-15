@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="panelRegistros" layout-manager="GridLayoutManager" row-count="10" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="21" left="21" bottom="21" right="21"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="600"/>
+      <xy x="20" y="20" width="800" height="600"/>
     </constraints>
     <properties>
       <minimumSize width="500" height="600"/>
@@ -135,14 +135,6 @@
         </constraints>
         <properties>
           <text value="Registrar sintomas"/>
-        </properties>
-      </component>
-      <component id="28aa2" class="javax.swing.JLabel" binding="labelRecomendacion">
-        <constraints>
-          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Recomendacion"/>
         </properties>
       </component>
     </children>

@@ -20,7 +20,7 @@ public class NuevoRegistroListener implements ActionListener {
     private void insertarNuevoRegistro() {
         List<Integer> indices = new ArrayList<>();
         for (int i = 0; i < gui.getTblModel().getRowCount(); i++) {
-            if (gui.getTblRegistroSintomas().getValueAt(i, 1) == Boolean.TRUE) {
+            if (gui.getTblRegistroSintomas().getValueAt(i, 2) == Boolean.TRUE) {
                 indices.add(i);
             }
         }

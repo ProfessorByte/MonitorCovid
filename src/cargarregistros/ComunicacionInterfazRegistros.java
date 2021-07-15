@@ -16,10 +16,8 @@ public class ComunicacionInterfazRegistros {
     private final CargarRegistrosGUI cargarRegistrosGUI;
     private final CargarCategoriasRegistros cargarCategoriasRegistros;
     private final EjecucionRegistros ejecucionRegistros;
-    private final IndicadorEstadoFase indicadorEstadoFase;
 
     public ComunicacionInterfazRegistros(CargarRegistros cargarRegistros) {
-        this.indicadorEstadoFase = new IndicadorEstadoFase();
         this.cargarRegistros = cargarRegistros;
         this.cargarRegistrosGUI = new CargarRegistrosGUI(this);
         this.cargarCategoriasRegistros = new CargarCategoriasRegistros();
@@ -27,37 +25,26 @@ public class ComunicacionInterfazRegistros {
         ejecucionRegistros.detenerEjecucion();
     }
 
-    public List<String> cargarSintomasAElegir() {
-        List<String> res = new ArrayList<>();
+    public List<String[]> cargarSintomasAElegir() {
+        List<String[]> res = new ArrayList<>();
         Sintomas totalSintomas = cargarRegistros.getTotalSintomas();
-        if (indicadorEstadoFase.existe()) {
+        for (Sintoma s: totalSintomas) {
             try {
-                if (indicadorEstadoFase.leerIndicador().equals("Fase2")) {
-                    for (Sintoma s: totalSintomas) {
-                        res.add(s.toString());
-                    }
-                } else {
-                    for (Sintoma s: totalSintomas) {
-                        if (Class.forName("sintomas.PrimeraFase").isInstance(s)) {
-                            res.add(s.toString());
-                        }
-                    }
+                if (Class.forName("sintomas.PrimeraFase").isInstance(s)) {
+                    res.add(new String[]{s.toString(), "PrimeraFase"});
+                }else if (Class.forName("sintomas.SegundaFase").isInstance(s)) {
+                    res.add(new String[]{s.toString(), "SegundaFase"});
                 }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-        } else {
-            for (Sintoma s: totalSintomas) {
-                try {
-                    if (Class.forName("sintomas.PrimeraFase").isInstance(s)) {
-                        res.add(s.toString());
-                    }
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
         }
-        Collections.sort(res);
+        Collections.sort(res, new Comparator<String[]>() {
+            @Override
+            public int compare(String[] o1, String[] o2) {
+                return o1[0].compareTo(o2[0]);
+            }
+        });
         return res;
     }
 
@@ -87,7 +74,11 @@ public class ComunicacionInterfazRegistros {
         Sintomas sintomasRegistro = new Sintomas();
         List<Sintoma> sintomas = new ArrayList<>();
         Sintomas totalSintomas = cargarRegistros.getTotalSintomas();
-        List<String> sintomasDisponibles = cargarSintomasAElegir();
+        List<String[]> sintomasCatDisponibles = cargarSintomasAElegir();
+        List<String> sintomasDisponibles = new ArrayList<>();
+        for (String[] sintoma: sintomasCatDisponibles) {
+            sintomasDisponibles.add(sintoma[0]);
+        }
         for (Sintoma s: totalSintomas) {
             if (sintomasDisponibles.contains(s.toString())) {
                 sintomas.add(s);
@@ -123,9 +114,5 @@ public class ComunicacionInterfazRegistros {
 
     public EjecucionRegistros getEjecucionRegistros() {
         return ejecucionRegistros;
-    }
-
-    public IndicadorEstadoFase getIndicadorEstadoFase() {
-        return indicadorEstadoFase;
     }
 }

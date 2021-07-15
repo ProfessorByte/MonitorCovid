@@ -28,7 +28,7 @@ public class Validador {
         String normalizacionEspacios = nombreSintoma.replaceAll(" +", " ").trim().toLowerCase();
         char[] nombreSintomaChars = normalizacionEspacios.toCharArray();
         nombreSintomaChars[0] = Character.toUpperCase(nombreSintomaChars[0]);
-        return new String(nombreSintomaChars);
+        return new String(nombreSintomaChars).toUpperCase();
     }
 
     private int levenshteinDistance(String str1, String str2) {
