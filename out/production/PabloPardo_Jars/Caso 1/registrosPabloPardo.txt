@@ -1,0 +1,8 @@
+#,1626463334860
+OJOS ARDIENTES,PrimeraFase
+DIARREA,PrimeraFase
+DOLOR DE CABEZA,PrimeraFase
+DECAIMIENTO,PrimeraFase
+HOLA,PrimeraFase
+PANDEMIA,PrimeraFase
+DOLOR DE OJOS,PrimeraFase

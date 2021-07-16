@@ -6,7 +6,7 @@ public class DatosFase {
     private File datosFaseArchivo;
 
     public DatosFase() {
-        datosFaseArchivo = new File("datosFase_PabloPardo.txt");
+        datosFaseArchivo = new File("fasePabloPardo.txt");
         if (!datosFaseArchivo.exists()) {
             try {
                 datosFaseArchivo.createNewFile();

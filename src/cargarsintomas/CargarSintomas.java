@@ -18,7 +18,7 @@ public class CargarSintomas {
 
     public CargarSintomas() {
         sintomas = new ArrayList<>();
-        sintomasTXT = new File("sintomas_PabloPardo.txt");
+        sintomasTXT = new File("sintomasPabloPardo.txt");
         if (!sintomasTXT.exists()) {
             try {
                 sintomasTXT.createNewFile();

@@ -21,6 +21,7 @@
           <component id="dbed2" class="javax.swing.JTable" binding="tblRegistroSintomas">
             <constraints/>
             <properties>
+              <autoCreateRowSorter value="true"/>
               <cellSelectionEnabled value="true"/>
               <enabled value="true"/>
               <surrendersFocusOnKeystroke value="false"/>

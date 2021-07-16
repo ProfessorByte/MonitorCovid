@@ -1,0 +1,1 @@
+java -cp "cargarsintomas.jar;cargarregistros.jar;home.jar" Main

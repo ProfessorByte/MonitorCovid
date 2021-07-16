@@ -29,9 +29,11 @@ public class Monitor {
 
     private void mostrarRecomendacion(int resultadoDiagnostico){
         if (resultadoDiagnostico == 1) {
-            System.out.println("No debe olvidar registrar sus sintomas diariamente y por precausion vaya a visitar a un medico");
+            System.out.println("Dia " + fase.getDia() + ": No debe olvidar registrar sus sintomas diariamente y por precausion vaya a visitar a un medico");
         } else if (resultadoDiagnostico == 2) {
-            System.out.println("USTED DEBE IR AL MEDICO DE FORMA URGENTE Y TOMARSE UNA PRUEBA PCR");
+            System.out.println("Dia " + fase.getDia() + ": USTED DEBE IR AL MEDICO DE FORMA URGENTE Y TOMARSE UNA PRUEBA PCR");
+        } else if (resultadoDiagnostico == 3) {
+            System.out.println("Dia " + fase.getDia() + ": SU SALUD ESTA EN RIESGO, EXISTE UNA ALTA PROBABILIDAD DE QUE TENGA COVID-19, DEBE IR AL MEDICO Y HACERSE LA PRUEBA PCR INMEDIATAMENTE");
         }
     }
 

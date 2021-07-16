@@ -22,7 +22,7 @@ public class CargarRegistros {
     public CargarRegistros(Sintomas sintomas) {
         this.sintomas = sintomas;
         this.registros = new Registros();
-        this.registrosTXT = new File("registros_PabloPardo.txt");
+        this.registrosTXT = new File("registrosPabloPardo.txt");
 
         try {
             if (!registrosTXT.exists()) {

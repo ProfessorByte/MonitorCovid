@@ -25,7 +25,11 @@ public class NuevoRegistroListener implements ActionListener {
             }
         }
         if (!indices.isEmpty()) {
-            gui.getComunicacionInterfazRegistros().crearRegistro(indices);
+            List<Integer> nuevosIndices = new ArrayList<>();
+            for (int idx: indices) {
+                nuevosIndices.add(gui.getTblRegistroSintomas().convertRowIndexToModel(idx));
+            }
+            gui.getComunicacionInterfazRegistros().crearRegistro(nuevosIndices);
             gui.getListFechasModel().removeAllElements();
             gui.mostrarFechasRegistros();
         }

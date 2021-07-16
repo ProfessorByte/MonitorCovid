@@ -31,7 +31,14 @@ public class DiagnosticoPorFases extends FuncionDiagnostico {
                 faseActual.setNombre("PrimeraFase");
                 faseActual.setDia(faseActual.getDia() + 1);
                 res = 1;
+            } else if (faseActual.getNombre().equals("SegundaFase") && faseActual.getDia() < 5) {
+                faseActual.setDia(faseActual.getDia() + 1);
+                res = 2;
+            } else if (faseActual.getNombre().equals("SegundaFase") && faseActual.getDia() >= 5 && cantSintomasRegSegFase(registros.peek()) >= cantSintomasSegundaFase() / 2) {
+                faseActual.setDia(faseActual.getDia() + 1);
+                res = 3;
             } else if (faseActual.getNombre().equals("SegundaFase")) {
+                faseActual.setDia(faseActual.getDia() + 1);
                 res = 2;
             }
             (new DatosFase()).guardarDatosFase(faseActual);
@@ -53,10 +60,38 @@ public class DiagnosticoPorFases extends FuncionDiagnostico {
         return res;
     }
 
+    private int cantSintomasSegundaFase() {
+        int res = 0;
+        for (Sintoma s: this.sintomas) {
+            try {
+                if (Class.forName("sintomas.SegundaFase").isInstance(s)) {
+                    res++;
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return res;
+    }
+
     private int cantSintomasEnRegistro(Registro registro) {
         int res = 0;
         for (Sintoma s: registro.getSintomas()) {
             res++;
+        }
+        return res;
+    }
+
+    private int cantSintomasRegSegFase(Registro registro) {
+        int res = 0;
+        for (Sintoma s: registro.getSintomas()) {
+            try {
+                if (Class.forName("sintomas.SegundaFase").isInstance(s)) {
+                    res++;
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         return res;
     }

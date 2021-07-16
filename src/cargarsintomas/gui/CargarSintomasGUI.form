@@ -34,7 +34,8 @@
           <component id="6e7f2" class="javax.swing.JTable" binding="tblSintomas">
             <constraints/>
             <properties>
-              <enabled value="false"/>
+              <autoCreateRowSorter value="true"/>
+              <enabled value="true"/>
             </properties>
           </component>
         </children>
