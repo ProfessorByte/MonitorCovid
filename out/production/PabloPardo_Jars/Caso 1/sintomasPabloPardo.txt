@@ -17,5 +17,3 @@ TOS SECA,SegundaFase
 ALTA TEMPERATURA,SegundaFase
 SEQUEDAD EN LA GARGANTA,SegundaFase
 PICAZON EN LA GARGANTA,SegundaFase
-HOLA,PrimeraFase
-PANDEMIA,PrimeraFase
